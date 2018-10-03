@@ -5,7 +5,8 @@ import java.util.ArrayDeque;
 import java.util.*;
 import java.io.*;
 
-class Task {
+class Task
+{
     private String name;
     private ZonedDateTime timestamp;
 
@@ -15,7 +16,10 @@ class Task {
         timestamp = ZonedDateTime.now();
     }
 
-    public void print() { /* add your code */ }
+    public void print()
+    {
+        System.out.println("New task = ");
+    }
 }
 
 class TaskQueue extends ArrayDeque<Task> {
@@ -35,26 +39,25 @@ public class Main {
     {
         TaskQueue Shelve = new TaskQueue();
         Scanner scan = new Scanner(System.in);
-        String input = null;
-        while (input.compareToIgnoreCase("Q")!=0)
-        {
-            System.out.println("Add (A) | List (L) | commit (C) | rollback (R) | quit (Q) >> ");
-            if(input.compareToIgnoreCase("A")==0)
-            {
-                
-            }
-            else if(input.compareToIgnoreCase("L")==0)
-            {
+        String input = "";
 
-            }
-            else if(input.compareToIgnoreCase("C")==0)
-            {
+            while (input.compareToIgnoreCase("q") != 0) {
+                System.out.printf("Add (A) | List (L) | commit (C) | rollback (R) | quit (Q) >> ");
+                input = scan.next();
+                if (input.compareToIgnoreCase("A") == 0)
+                {
+                    System.out.print("New Task = ");
+                    scan.nextLine();
+                    Shelve.add(new Task(scan.nextLine()));
 
-            }
-            else if(input.compareToIgnoreCase("R")==0)
-            {
+                } else if (input.compareToIgnoreCase("L") == 0) {
 
-            }
+                } else if (input.compareToIgnoreCase("C") == 0) {
+
+                } else if (input.compareToIgnoreCase("R") == 0) {
+
+                }
+
         }
     }
 
