@@ -36,25 +36,31 @@ class TaskQueue extends ArrayDeque<Task> {
     public void commit()
     {
         Scanner scan = new Scanner(System.in);
+        System.out.print("Number of task to commit ");
+        int j = scan.nextInt();
         if(this.isEmpty())
             System.out.print("No task to commit\n");
-        else
-        for(int i=0;i<scan.nextInt();i++)
-        {
-            this.pollFirst().print();
+        else {
+            for (int i = 0; i < j; i++) {
+                this.pollFirst().print();
+            }
         }
     }
 
     public void rollback()
     {
-        Scanner scan = new Scanner(System.in);
-        if(this.isEmpty())
-            System.out.print("No task to rollback\n");
-        else
-        for(int i=0;i<scan.nextInt();i++)
-        {
-            this.pollLast().print();
-        }
+
+            Scanner scan = new Scanner(System.in);
+            System.out.print("Number of task to rollback ");
+            int j = scan.nextInt();
+            if (this.isEmpty())
+                System.out.print("No task to rollback\n");
+            else {
+                for (int i = 0; i < j; i++) {
+                    this.pollLast().print();
+                }
+
+            }
     }
 }
 
