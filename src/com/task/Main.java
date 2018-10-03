@@ -1,10 +1,16 @@
 package com.task;
 
+import java.time.ZonedDateTime;
+import java.util.ArrayDeque;
+import java.util.*;
+import java.io.*;
+
 class Task {
     private String name;
     private ZonedDateTime timestamp;
 
-    public Task(String n) {
+    public Task(String n)
+    {
         name = n;
         timestamp = ZonedDateTime.now();
     }
@@ -13,7 +19,10 @@ class Task {
 }
 
 class TaskQueue extends ArrayDeque<Task> {
-    public void list() { /* add your code to list all tasks */ }
+    public void list()
+    {
+
+    }
 
     public void commit() { /* add your code to commit n tasks */ }
 
@@ -22,7 +31,31 @@ class TaskQueue extends ArrayDeque<Task> {
 
 public class Main {
 
-    public static void main(String[] args) {
-	   
+    public static void main(String[] args)
+    {
+        TaskQueue Shelve = new TaskQueue();
+        Scanner scan = new Scanner(System.in);
+        String input = null;
+        while (input.compareToIgnoreCase("Q")!=0)
+        {
+            System.out.println("Add (A) | List (L) | commit (C) | rollback (R) | quit (Q) >> ");
+            if(input.compareToIgnoreCase("A")==0)
+            {
+                
+            }
+            else if(input.compareToIgnoreCase("L")==0)
+            {
+
+            }
+            else if(input.compareToIgnoreCase("C")==0)
+            {
+
+            }
+            else if(input.compareToIgnoreCase("R")==0)
+            {
+
+            }
+        }
     }
+
 }
