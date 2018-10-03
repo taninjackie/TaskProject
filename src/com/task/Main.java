@@ -50,6 +50,7 @@ class TaskQueue extends ArrayDeque<Task> {
         Scanner scan = new Scanner(System.in);
         if(this.isEmpty())
             System.out.print("No task to rollback\n");
+        else
         for(int i=0;i<scan.nextInt();i++)
         {
             this.pollLast().print();
