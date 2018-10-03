@@ -1,9 +1,8 @@
 package com.task;
-
 import java.time.ZonedDateTime;
-import java.util.ArrayDeque;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.io.*;
+
 
 class Task
 {
@@ -18,19 +17,44 @@ class Task
 
     public void print()
     {
-        System.out.println("New task = ");
+        System.out.printf("%s %s\n",name,timestamp.format(DateTimeFormatter.RFC_1123_DATE_TIME));
     }
+
 }
 
 class TaskQueue extends ArrayDeque<Task> {
     public void list()
     {
+        for(int i=0;i<this.size();i++)
+        {
+            this.add(peekFirst());
+            this.pollFirst().print();
+        }
 
     }
 
-    public void commit() { /* add your code to commit n tasks */ }
+    public void commit()
+    {
+        Scanner scan = new Scanner(System.in);
+        if(this.isEmpty())
+            System.out.print("No task to commit\n");
+        else
+        for(int i=0;i<scan.nextInt();i++)
+        {
+            this.pollFirst().print();
+        }
+    }
 
-    public void rollback() { /* add your code to rollback n tasks */ }
+    public void rollback()
+    {
+        Scanner scan = new Scanner(System.in);
+        if(this.isEmpty())
+            System.out.print("No task to rollback\n");
+        for(int i=0;i<scan.nextInt();i++)
+        {
+            this.pollLast().print();
+        }
+    }
 }
 
 public class Main {
@@ -50,12 +74,17 @@ public class Main {
                     scan.nextLine();
                     Shelve.add(new Task(scan.nextLine()));
 
-                } else if (input.compareToIgnoreCase("L") == 0) {
+                } else if (input.compareToIgnoreCase("L") == 0)
+                {
+                    Shelve.list();
 
-                } else if (input.compareToIgnoreCase("C") == 0) {
+                } else if (input.compareToIgnoreCase("C") == 0)
+                {
+                    Shelve.commit();
 
-                } else if (input.compareToIgnoreCase("R") == 0) {
-
+                } else if (input.compareToIgnoreCase("R") == 0)
+                {
+                    Shelve.rollback();
                 }
 
         }
